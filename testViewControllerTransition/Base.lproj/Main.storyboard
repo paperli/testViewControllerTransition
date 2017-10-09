@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,112 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="testViewControllerTransition" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUa-09-HOG" userLabel="Card View">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E04-Gz-jGA">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="GO"/>
+                                        <connections>
+                                            <segue destination="38i-tn-Dtl" kind="presentation" id="uwJ-gO-4O4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.65098039220000004" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="E04-Gz-jGA" firstAttribute="leading" secondItem="JUa-09-HOG" secondAttribute="leading" id="BNo-Wd-MEi"/>
+                                    <constraint firstItem="E04-Gz-jGA" firstAttribute="top" secondItem="JUa-09-HOG" secondAttribute="top" id="C1W-Xv-JZ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="E04-Gz-jGA" secondAttribute="bottom" id="E9I-xa-rjx"/>
+                                    <constraint firstAttribute="trailing" secondItem="E04-Gz-jGA" secondAttribute="trailing" id="i6v-LQ-Qfo"/>
+                                    <constraint firstAttribute="width" constant="240" id="pMF-bz-H41"/>
+                                    <constraint firstAttribute="height" constant="128" id="ue7-gs-ZGx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JUa-09-HOG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QQ7-YT-3wO"/>
+                            <constraint firstItem="JUa-09-HOG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xV6-Th-bM1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="170" y="28"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="ff0-ht-3Sc">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="38i-tn-Dtl" customClass="DetailViewController" customModule="testViewControllerTransition" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QHV-Pf-INV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-Ed-V9R">
+                                <rect key="frame" x="136.5" y="23" width="103" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os1-Ro-aCC">
+                                <rect key="frame" x="0.0" y="104" width="375" height="190"/>
+                                <color key="backgroundColor" red="0.0" green="0.92156862750000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="bfn-JB-DBg"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NG-Eh-MT1">
+                                <rect key="frame" x="16" y="318" width="343" height="193.5"/>
+                                <string key="text">Your first job is to create the interaction controller. Go to File\New\File…, and then choose iOS\Source\Cocoa Touch Class. Call it SwipeInteractionController, and make it a subclass of UIPercentDrivenInteractiveTransition. Make sure the Language is Swift then click Next. Choose the Interaction Controllers group and click Create.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxm-VS-oOB">
+                                <rect key="frame" x="32" y="568" width="311" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eTJ-nM-dl4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="CLOSE"/>
+                                <connections>
+                                    <action selector="dismissVC:" destination="38i-tn-Dtl" eventType="touchUpInside" id="LJV-V2-Ulg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DBc-o2-MKI" firstAttribute="trailing" secondItem="bxm-VS-oOB" secondAttribute="trailing" constant="32" id="H4G-I4-Paq"/>
+                            <constraint firstItem="os1-Ro-aCC" firstAttribute="top" secondItem="tMl-Ed-V9R" secondAttribute="bottom" constant="38" id="MUh-eA-F3T"/>
+                            <constraint firstItem="bxm-VS-oOB" firstAttribute="leading" secondItem="DBc-o2-MKI" secondAttribute="leading" constant="32" id="PS8-CR-5nV"/>
+                            <constraint firstItem="1NG-Eh-MT1" firstAttribute="leading" secondItem="DBc-o2-MKI" secondAttribute="leading" constant="16" id="SsC-VF-3Jr"/>
+                            <constraint firstItem="DBc-o2-MKI" firstAttribute="top" secondItem="tMl-Ed-V9R" secondAttribute="bottom" constant="-46" id="SyY-mp-2Qz"/>
+                            <constraint firstItem="tMl-Ed-V9R" firstAttribute="centerX" secondItem="DBc-o2-MKI" secondAttribute="centerX" id="Xwe-cD-zMO"/>
+                            <constraint firstItem="DBc-o2-MKI" firstAttribute="bottom" secondItem="bxm-VS-oOB" secondAttribute="bottom" constant="55" id="h77-mc-6jZ"/>
+                            <constraint firstItem="DBc-o2-MKI" firstAttribute="trailing" secondItem="1NG-Eh-MT1" secondAttribute="trailing" constant="16" id="io6-Ex-6mv"/>
+                            <constraint firstItem="os1-Ro-aCC" firstAttribute="trailing" secondItem="DBc-o2-MKI" secondAttribute="trailing" id="pbb-EO-JNb"/>
+                            <constraint firstItem="1NG-Eh-MT1" firstAttribute="top" secondItem="os1-Ro-aCC" secondAttribute="bottom" constant="24" id="w96-3X-3YJ"/>
+                            <constraint firstItem="os1-Ro-aCC" firstAttribute="leading" secondItem="DBc-o2-MKI" secondAttribute="leading" id="wId-aN-5aw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DBc-o2-MKI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="seE-px-k84" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="29"/>
         </scene>
     </scenes>
 </document>

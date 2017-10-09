@@ -12,6 +12,10 @@
 		20AFF9311F8A830D002C26F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AFF92F1F8A830D002C26F7 /* Main.storyboard */; };
 		20AFF9331F8A830D002C26F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AFF9321F8A830D002C26F7 /* Assets.xcassets */; };
 		20AFF9361F8A830D002C26F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AFF9341F8A830D002C26F7 /* LaunchScreen.storyboard */; };
+		20AFF93E1F8A83C2002C26F7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF93D1F8A83C2002C26F7 /* DetailViewController.swift */; };
+		20E42C591F8BA2A500879F1F /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E42C581F8BA2A500879F1F /* SwipeInteractionController.swift */; };
+		20E42C5B1F8BB20500879F1F /* PresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E42C5A1F8BB20500879F1F /* PresentAnimationController.swift */; };
+		20E42C5F1F8BB9E300879F1F /* DismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E42C5E1F8BB9E300879F1F /* DismissAnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		20AFF9321F8A830D002C26F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20AFF9351F8A830D002C26F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20AFF9371F8A830D002C26F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20AFF93D1F8A83C2002C26F7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		20E42C581F8BA2A500879F1F /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
+		20E42C5A1F8BB20500879F1F /* PresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationController.swift; sourceTree = "<group>"; };
+		20E42C5E1F8BB9E300879F1F /* DismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 			children = (
 				20AFF92B1F8A830C002C26F7 /* AppDelegate.swift */,
 				20AFF92D1F8A830D002C26F7 /* ViewController.swift */,
+				20E42C5A1F8BB20500879F1F /* PresentAnimationController.swift */,
+				20E42C5E1F8BB9E300879F1F /* DismissAnimationController.swift */,
+				20AFF93D1F8A83C2002C26F7 /* DetailViewController.swift */,
+				20E42C581F8BA2A500879F1F /* SwipeInteractionController.swift */,
 				20AFF92F1F8A830D002C26F7 /* Main.storyboard */,
 				20AFF9321F8A830D002C26F7 /* Assets.xcassets */,
 				20AFF9341F8A830D002C26F7 /* LaunchScreen.storyboard */,
@@ -136,7 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E42C5F1F8BB9E300879F1F /* DismissAnimationController.swift in Sources */,
+				20E42C5B1F8BB20500879F1F /* PresentAnimationController.swift in Sources */,
+				20AFF93E1F8A83C2002C26F7 /* DetailViewController.swift in Sources */,
 				20AFF92E1F8A830D002C26F7 /* ViewController.swift in Sources */,
+				20E42C591F8BA2A500879F1F /* SwipeInteractionController.swift in Sources */,
 				20AFF92C1F8A830C002C26F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
