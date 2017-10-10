@@ -18,23 +18,35 @@ class DismissAnimationController: NSObject, UIViewControllerAnimatedTransitionin
             return
         }
         
-        let blackBackgroundView = UIView()
-        blackBackgroundView.frame = toVC.view.bounds
-        blackBackgroundView.backgroundColor = UIColor.black
-        blackBackgroundView.alpha = 0.5
-        toVC.view.addSubview(blackBackgroundView)
+        var blackBackgroundView: UIView
+        
+        if let tempView = toVC.view.viewWithTag(3) {
+            // already have the black overlay view
+            print("oh yeah there is the view")
+            blackBackgroundView = tempView
+        } else {
+            print("no view")
+            blackBackgroundView = UIView()
+            blackBackgroundView.tag = 3
+            blackBackgroundView.frame = toVC.view.bounds
+            blackBackgroundView.backgroundColor = UIColor.black
+            blackBackgroundView.alpha = 0
+            blackBackgroundView.isUserInteractionEnabled = false
+            toVC.view.addSubview(blackBackgroundView)
+        }
         
         let containerView = transitionContext.containerView
         
         //let initialFrame = transitionContext.initialFrame(for: fromVC)
         
         let snapshot = fromVC.view.snapshotView(afterScreenUpdates: false)
+        snapshot?.transform = fromVC.view.transform
         
         //containerView.addSubview(toVC.view)
         containerView.addSubview(snapshot!)
         fromVC.view.isHidden = true
         
-        toVC.view.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        toVC.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         //toVC.view.alpha = 0.1
         
         let duration = transitionDuration(using: transitionContext)
@@ -54,7 +66,7 @@ class DismissAnimationController: NSObject, UIViewControllerAnimatedTransitionin
             }
             fromVC.view.isHidden = false
             //toVC.view.isHidden = true
-            blackBackgroundView.removeFromSuperview()
+            //blackBackgroundView.removeFromSuperview()
             snapshot?.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }

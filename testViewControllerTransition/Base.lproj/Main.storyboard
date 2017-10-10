@@ -67,20 +67,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMl-Ed-V9R">
-                                <rect key="frame" x="136.5" y="23" width="103" height="43"/>
+                                <rect key="frame" x="136.5" y="28" width="103" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os1-Ro-aCC">
-                                <rect key="frame" x="0.0" y="104" width="375" height="190"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="190"/>
                                 <color key="backgroundColor" red="0.0" green="0.92156862750000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="bfn-JB-DBg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NG-Eh-MT1">
-                                <rect key="frame" x="16" y="318" width="343" height="193.5"/>
+                                <rect key="frame" x="16" y="323" width="343" height="193.5"/>
                                 <string key="text">Your first job is to create the interaction controller. Go to File\New\File…, and then choose iOS\Source\Cocoa Touch Class. Call it SwipeInteractionController, and make it a subclass of UIPercentDrivenInteractiveTransition. Make sure the Language is Swift then click Next. Choose the Interaction Controllers group and click Create.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -100,11 +100,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tMl-Ed-V9R" firstAttribute="top" secondItem="DBc-o2-MKI" secondAttribute="top" constant="8" id="FOE-pe-w4K"/>
                             <constraint firstItem="DBc-o2-MKI" firstAttribute="trailing" secondItem="bxm-VS-oOB" secondAttribute="trailing" constant="32" id="H4G-I4-Paq"/>
                             <constraint firstItem="os1-Ro-aCC" firstAttribute="top" secondItem="tMl-Ed-V9R" secondAttribute="bottom" constant="38" id="MUh-eA-F3T"/>
                             <constraint firstItem="bxm-VS-oOB" firstAttribute="leading" secondItem="DBc-o2-MKI" secondAttribute="leading" constant="32" id="PS8-CR-5nV"/>
                             <constraint firstItem="1NG-Eh-MT1" firstAttribute="leading" secondItem="DBc-o2-MKI" secondAttribute="leading" constant="16" id="SsC-VF-3Jr"/>
-                            <constraint firstItem="DBc-o2-MKI" firstAttribute="top" secondItem="tMl-Ed-V9R" secondAttribute="bottom" constant="-46" id="SyY-mp-2Qz"/>
                             <constraint firstItem="tMl-Ed-V9R" firstAttribute="centerX" secondItem="DBc-o2-MKI" secondAttribute="centerX" id="Xwe-cD-zMO"/>
                             <constraint firstItem="DBc-o2-MKI" firstAttribute="bottom" secondItem="bxm-VS-oOB" secondAttribute="bottom" constant="55" id="h77-mc-6jZ"/>
                             <constraint firstItem="DBc-o2-MKI" firstAttribute="trailing" secondItem="1NG-Eh-MT1" secondAttribute="trailing" constant="16" id="io6-Ex-6mv"/>
