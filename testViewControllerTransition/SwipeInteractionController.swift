@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     
-    let SWIPE_MARGIN = CGFloat(200.0)
+    let SWIPE_MARGIN = CGFloat(400.0)
     
     var interactionInProgress = false
     private var shouldCompleteTransition = false

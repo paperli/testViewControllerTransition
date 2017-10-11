@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("DetailViewController::viewDidLoad")
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +40,31 @@ class DetailViewController: UIViewController {
     
     @IBAction func unwindToVC(segue:UIStoryboardSegue) {
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("DetailViewController::viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("DetailViewController::viewDidAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("DetailViewController::viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("DetailViewController::viewDidDisappear")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("DetailViewController::viewDidLayoutSubviews")
     }
     
 }
