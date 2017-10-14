@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,3 +76,28 @@ class DetailViewController: UIViewController {
         return swipeInteractionController.interactionInProgress ? swipeInteractionController : nil
     }
 }*/
+
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")
+        cell?.textLabel?.text = "cell \(String(indexPath.row))"
+        return cell!
+    }
+    
+}
+
+extension DetailViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        let offset = tableView.contentOffset
+        print(offset.y)
+        if offset.y <= 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+}

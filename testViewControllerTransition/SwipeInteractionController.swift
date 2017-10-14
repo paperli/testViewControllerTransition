@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     
-    let SWIPE_MARGIN = CGFloat(400.0)
+    let SWIPE_MARGIN = CGFloat(UIScreen.main.bounds.height)
     
     var interactionInProgress = false
     private var shouldCompleteTransition = false
@@ -18,12 +18,15 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     
     func wireToViewController(viewController: UIViewController!) {
         self.viewController = viewController
-        prepareGestureRecongizerInView(view: viewController.view)
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
+        viewController.view.addGestureRecognizer(gesture)
+        gesture.delegate = viewController as? UIGestureRecognizerDelegate
     }
     
     private func prepareGestureRecongizerInView(view: UIView) {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
         view.addGestureRecognizer(gesture)
+        //gesture.delegate = self
         
     }
     
