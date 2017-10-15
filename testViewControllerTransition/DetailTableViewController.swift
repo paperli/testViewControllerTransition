@@ -9,7 +9,11 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
-
+    
+    private let presentAnimationController = PresentAnimationController()
+    private let dismissAnimationController = DismissAnimationController()
+    private let swipeTableInteractionController = SwipeTableInteractionController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +22,8 @@ class DetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.transitioningDelegate = self
+        swipeTableInteractionController.wireToViewController(viewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,4 +96,19 @@ class DetailTableViewController: UITableViewController {
     }
     */
     
+}
+
+extension DetailTableViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return presentAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return dismissAnimationController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return swipeTableInteractionController.interactionInProgress ? swipeTableInteractionController : nil
+    }
 }

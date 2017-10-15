@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2006CE741F93A1C10033E087 /* SwipeTableInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2006CE731F93A1C10033E087 /* SwipeTableInteractionController.swift */; };
 		204142D41F925BEB00F9A508 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204142D31F925BEB00F9A508 /* DetailTableViewController.swift */; };
 		20AFF92C1F8A830C002C26F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF92B1F8A830C002C26F7 /* AppDelegate.swift */; };
 		20AFF92E1F8A830D002C26F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AFF92D1F8A830D002C26F7 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2006CE731F93A1C10033E087 /* SwipeTableInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableInteractionController.swift; sourceTree = "<group>"; };
 		204142D31F925BEB00F9A508 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		20AFF9281F8A830C002C26F7 /* testViewControllerTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testViewControllerTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AFF92B1F8A830C002C26F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				20AFF93D1F8A83C2002C26F7 /* DetailViewController.swift */,
 				204142D31F925BEB00F9A508 /* DetailTableViewController.swift */,
 				20E42C581F8BA2A500879F1F /* SwipeInteractionController.swift */,
+				2006CE731F93A1C10033E087 /* SwipeTableInteractionController.swift */,
 				20AFF92F1F8A830D002C26F7 /* Main.storyboard */,
 				20AFF9321F8A830D002C26F7 /* Assets.xcassets */,
 				20AFF9341F8A830D002C26F7 /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 				20E42C5F1F8BB9E300879F1F /* DismissAnimationController.swift in Sources */,
 				20E42C5B1F8BB20500879F1F /* PresentAnimationController.swift in Sources */,
 				20AFF93E1F8A83C2002C26F7 /* DetailViewController.swift in Sources */,
+				2006CE741F93A1C10033E087 /* SwipeTableInteractionController.swift in Sources */,
 				20AFF92E1F8A830D002C26F7 /* ViewController.swift in Sources */,
 				20E42C591F8BA2A500879F1F /* SwipeInteractionController.swift in Sources */,
 				20AFF92C1F8A830C002C26F7 /* AppDelegate.swift in Sources */,
