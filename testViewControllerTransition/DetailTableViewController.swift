@@ -29,17 +29,17 @@ class DetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return 20
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell2")
-        //cell?.textLabel?.text = "Row \(indexPath.row)"
+        cell?.textLabel?.text = "Row \(indexPath.row)"
         // Configure the cell...
 
         return cell!
@@ -89,5 +89,5 @@ class DetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

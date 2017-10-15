@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private var lastContentOffsetY: CGFloat = 0
+    private var scrollingUp = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +79,16 @@ class DetailViewController: UIViewController {
     }
 }*/
 
+extension DetailViewController: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.bounces = scrollView.contentOffset.y > 10
+        
+        self.scrollingUp = self.lastContentOffsetY >= scrollView.contentOffset.y
+        //print("scrolling up: \(self.scrollingUp):::last:\(self.lastContentOffsetY):::new:\(scrollView.contentOffset.y)")
+        self.lastContentOffsetY = scrollView.contentOffset.y
+    }
+}
+
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
@@ -92,9 +104,11 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        let translation = tableView.panGestureRecognizer.translation(in: tableView)
         let offset = tableView.contentOffset
-        print(offset.y)
-        if offset.y <= 0 {
+        print(translation.y)
+        //print("current:\(offset.y):::::last:\(self.lastContentOffsetY)")
+        if offset.y <= 0 && translation.y > 0 {
             return true
         } else {
             return false
