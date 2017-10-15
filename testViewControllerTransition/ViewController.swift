@@ -24,16 +24,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? DetailViewController {
-            destinationVC.transitioningDelegate = self
-            swipeInteractionController.wireToViewController(viewController: destinationVC)
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toVC" {
+            if let destinationVC = segue.destination as? DetailViewController {
+                //destinationVC.transitioningDelegate = self
+                swipeInteractionController.wireToViewController(viewController: destinationVC)
+            }
+        } else if segue.identifier == "toTVC" {
+            // tableViewController
+            if let destinationVC = segue.destination as? DetailTableViewController {
+                //destinationVC.transitioningDelegate = self
+                swipeInteractionController.wireToViewController(viewController: destinationVC)
+            }
         }
-    }
+        
+    }*/
     
 }
 
-extension ViewController: UIViewControllerTransitioningDelegate {
+/*extension ViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentAnimationController
@@ -46,4 +55,4 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return swipeInteractionController.interactionInProgress ? swipeInteractionController : nil
     }
-}
+}*/

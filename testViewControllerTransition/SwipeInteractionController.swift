@@ -23,6 +23,13 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
         gesture.delegate = viewController as? UIGestureRecognizerDelegate
     }
     
+    func wireToTableViewController(viewController: UITableViewController!) {
+        self.viewController = viewController
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
+        viewController.view.addGestureRecognizer(gesture)
+        gesture.delegate = viewController as? UIGestureRecognizerDelegate
+    }
+    
     private func prepareGestureRecongizerInView(view: UIView) {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
         view.addGestureRecognizer(gesture)

@@ -10,15 +10,21 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    private let presentAnimationController = PresentAnimationController()
+    private let dismissAnimationController = DismissAnimationController()
+    private let swipeInteractionController = SwipeInteractionController()
+    
     @IBOutlet weak var tableView: UITableView!
-    private var lastContentOffsetY: CGFloat = 0
-    private var scrollingUp = true
+    //private var lastContentOffsetY: CGFloat = 0
+    //private var scrollingUp = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("DetailViewController::viewDidLoad")
+        self.transitioningDelegate = self
+        swipeInteractionController.wireToViewController(viewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,9 +89,9 @@ extension DetailViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.bounces = scrollView.contentOffset.y > 10
         
-        self.scrollingUp = self.lastContentOffsetY >= scrollView.contentOffset.y
+        //self.scrollingUp = self.lastContentOffsetY >= scrollView.contentOffset.y
         //print("scrolling up: \(self.scrollingUp):::last:\(self.lastContentOffsetY):::new:\(scrollView.contentOffset.y)")
-        self.lastContentOffsetY = scrollView.contentOffset.y
+        //sself.lastContentOffsetY = scrollView.contentOffset.y
     }
 }
 
@@ -113,5 +119,20 @@ extension DetailViewController: UIGestureRecognizerDelegate {
         } else {
             return false
         }
+    }
+}
+
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return presentAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return dismissAnimationController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return swipeInteractionController.interactionInProgress ? swipeInteractionController : nil
     }
 }
