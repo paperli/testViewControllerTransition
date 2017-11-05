@@ -18,55 +18,33 @@ class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
     
     func wireToViewController(viewController: UIViewController!) {
         self.viewController = viewController
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
-        viewController.view.addGestureRecognizer(gesture)
-        gesture.delegate = viewController as? UIGestureRecognizerDelegate
     }
     
-    func wireToTableViewController(viewController: UITableViewController!) {
-        self.viewController = viewController
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
-        viewController.view.addGestureRecognizer(gesture)
-        gesture.delegate = viewController as? UIGestureRecognizerDelegate
+    func new_scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // TODO
+        interactionInProgress = true
+        viewController.dismiss(animated: true, completion: nil)
     }
     
-    private func prepareGestureRecongizerInView(view: UIView) {
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(_:)))
-        view.addGestureRecognizer(gesture)
-        //gesture.delegate = self
-        
-    }
-    
-    @objc func handleGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
-        let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
-        var progress = translation.y / SWIPE_MARGIN
+    func new_scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // TODO
+        let offset = scrollView.contentOffset
+        var progress = fabs(offset.y) / SWIPE_MARGIN
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
         
-        switch gestureRecognizer.state {
-            case .began:
-                // begin
-                interactionInProgress = true
-                viewController.dismiss(animated: true, completion: nil)
-            case .changed:
-                shouldCompleteTransition = progress > 0.5
-                update(progress)
-            case .cancelled:
-                print("cancelled")
-                interactionInProgress = false
-                cancel()
-            case .ended:
-                print("ended")
-                interactionInProgress = false
-                
-                if !shouldCompleteTransition {
-                    print("ended:cancel")
-                    cancel()
-                } else {
-                    print("ended:finish")
-                    finish()
-                }
-            default:
-                print("Unsupported")
+        shouldCompleteTransition = progress > 0.5
+        update(progress)
+    }
+    
+    func new_scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // TODO
+        print("scrollViewWillEndDragging")
+        interactionInProgress = false
+        
+        if shouldCompleteTransition {
+            finish()
+        } else {
+            cancel()
         }
     }
 }

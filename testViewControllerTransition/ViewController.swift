@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var mTextView: UITextView!
     private let presentAnimationController = PresentAnimationController()
     private let dismissAnimationController = DismissAnimationController()
     private let swipeInteractionController = SwipeInteractionController()
@@ -17,6 +18,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let attrbutedText = NSMutableAttributedString(string: self.mTextView.text)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 2
+        style.lineHeightMultiple = 1.2
+        attrbutedText.setAttributes([NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], range: NSRange(location: 0, length: attrbutedText.length))
+        
+        //mTextView.layoutManager.delegate = self
+        mTextView.attributedText = attrbutedText
+        //mTextView.font = UIFont.systemFont(ofSize: 16)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +51,12 @@ class ViewController: UIViewController {
         
     }*/
     
+}
+
+extension ViewController: NSLayoutManagerDelegate {
+    func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat {
+        return 10
+    }
 }
 
 /*extension ViewController: UIViewControllerTransitioningDelegate {

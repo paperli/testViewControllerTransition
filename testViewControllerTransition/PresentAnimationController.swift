@@ -39,10 +39,10 @@ class PresentAnimationController: NSObject, UIViewControllerAnimatedTransitionin
         
         if let tempView = fromVC.view.viewWithTag(3) {
             // already have the black overlay view
-            print("oh yeah there is the view")
+            //print("oh yeah there is the view")
             blackBackgroundView = tempView
         } else {
-            print("no view")
+            //print("no view")
             blackBackgroundView = UIView()
             blackBackgroundView.tag = 3
             blackBackgroundView.frame = fromVC.view.bounds

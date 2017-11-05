@@ -12,7 +12,12 @@ class DetailTableViewController: UITableViewController {
     
     private let presentAnimationController = PresentAnimationController()
     private let dismissAnimationController = DismissAnimationController()
-    private let swipeTableInteractionController = SwipeTableInteractionController()
+    private let swipeTableInteractionController = SwipeInteractionController()
+    
+    var interactionInProgress = false
+    private var shouldCompleteTransition = false
+    
+    let SWIPE_MARGIN: CGFloat = 300.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +100,26 @@ class DetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+extension DetailTableViewController {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // TODO
+        print("scrollViewWillBeginDragging")
+        swipeTableInteractionController.new_scrollViewWillBeginDragging(scrollView)
+    }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // TODO
+        swipeTableInteractionController.new_scrollViewDidScroll(scrollView)
+        
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // TODO
+        print("scrollViewWillEndDragging")
+        swipeTableInteractionController.new_scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
 }
 
 extension DetailTableViewController: UIViewControllerTransitioningDelegate {

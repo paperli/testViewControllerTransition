@@ -12,7 +12,12 @@ class DetailViewController: UIViewController {
     
     private let presentAnimationController = PresentAnimationController()
     private let dismissAnimationController = DismissAnimationController()
-    private let swipeInteractionController = SwipeInteractionController()
+    private let swipeInteractionController = SwipeTableInteractionController()
+    
+    var interactionInProgress = false
+    private var shouldCompleteTransition = false
+    
+    let SWIPE_MARGIN: CGFloat = 300.0
     
     @IBOutlet weak var tableView: UITableView!
     //private var lastContentOffsetY: CGFloat = 0
@@ -24,7 +29,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("DetailViewController::viewDidLoad")
         self.transitioningDelegate = self
-        swipeInteractionController.wireToViewController(viewController: self)
+        //swipeInteractionController.wireToViewController(viewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,12 +91,35 @@ class DetailViewController: UIViewController {
 }*/
 
 extension DetailViewController: UITableViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // TODO
+        print("scrollViewWillBeginDragging")
+        swipeInteractionController.interactionInProgress = true
+        //interactionInProgress = true
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.bounces = scrollView.contentOffset.y > 10
+        // TODO
+        //print("scrollViewDidScroll")
+        let offset = scrollView.contentOffset
+        var progress = fabs(offset.y) / SWIPE_MARGIN
+        progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
         
-        //self.scrollingUp = self.lastContentOffsetY >= scrollView.contentOffset.y
-        //print("scrolling up: \(self.scrollingUp):::last:\(self.lastContentOffsetY):::new:\(scrollView.contentOffset.y)")
-        //sself.lastContentOffsetY = scrollView.contentOffset.y
+        shouldCompleteTransition = progress > 0.5
+        swipeInteractionController.update(progress)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // TODO
+        print("scrollViewWillEndDragging")
+        swipeInteractionController.interactionInProgress = false
+        
+        if shouldCompleteTransition {
+            swipeInteractionController.finish()
+        } else {
+            swipeInteractionController.cancel()
+        }
     }
 }
 
@@ -108,7 +136,7 @@ extension DetailViewController: UITableViewDataSource {
     
 }
 
-extension DetailViewController: UIGestureRecognizerDelegate {
+/*extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         let translation = tableView.panGestureRecognizer.translation(in: tableView)
         let offset = tableView.contentOffset
@@ -120,7 +148,7 @@ extension DetailViewController: UIGestureRecognizerDelegate {
             return false
         }
     }
-}
+}*/
 
 extension DetailViewController: UIViewControllerTransitioningDelegate {
     
