@@ -110,13 +110,18 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        let translation = tableView.panGestureRecognizer.translation(in: tableView)
+        let gesture = gestureRecognizer as! UIPanGestureRecognizer
+        let translation = gesture.translation(in: tableView)
+        let velocity = gesture.velocity(in: tableView).y
         let offset = tableView.contentOffset
+        
         print(translation.y)
         //print("current:\(offset.y):::::last:\(self.lastContentOffsetY)")
-        if offset.y <= 0 && translation.y > 0 {
+        if offset.y <= 0 && velocity > 0 {
+            tableView.isScrollEnabled = false
             return true
         } else {
+            tableView.isScrollEnabled = true
             return false
         }
     }
